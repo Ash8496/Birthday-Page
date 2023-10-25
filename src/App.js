@@ -1,25 +1,26 @@
-import logo from './logo.svg';
-import './App.css';
-
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+import { useState } from 'react'
+import './App.css'
+import Data from './Function'
+const App = () => {
+    const[data, setData] = useState(Data)
+    return(
+        <div>
+            <section>
+                <main>
+                    <h3>Today Bithday {data.length} 🎉🥳</h3>
+                    {data.map((x)=>{
+                        return(
+                            <div className="Screen" key={x.image}>
+                                <img src={x.image} alt="" height={'70px'} width={'70px'}></img>
+                                <ruby><p>{x.age}</p><rt>{x.name}</rt></ruby>
+                            </div>
+                        )
+                    })}
+                    <button onClick={() => setData([])}>Clear</button>
+                </main>
+            </section>
+        </div>
+    )
 }
 
-export default App;
+export default App
